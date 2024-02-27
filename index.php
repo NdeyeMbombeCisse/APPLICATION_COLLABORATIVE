@@ -1,15 +1,21 @@
 <?php
 include "config.php";
 
-if (isset($_POST['submit'])){
+if (isset($_POST['envoyer'])){
     $prenom= $_POST['prenom'];
     $nom= $_POST['nom'];
     $email= $_POST['email'];
-    $mot_de_pass= $_POST['mot de pass'];
+    $mot_de_pass= $_POST['mot_de_pass'];
 
 
-    $sql="INSERT INTO utilisateur (prenom,nom,email,mot_de_pass) VALUES('prenom','nom','email','mot_de_pass')";
-    $resultat =mysql_query($link,$sql);
+    $sql="INSERT INTO utilisateur (prenom,nom,email,mot_de_pass) VALUES(' $prenom','$nom','$email','$mot_de_pass')";
+    $resultat =mysqli_query($link,$sql);
+
+    if($resultat){
+      header("location: index.php? msg=New record created successefully")  ;
+    }else{
+        echo"erreur"  .mysqli_error($link);
+    }
 }
  ?>
 <!DOCTYPE html>
@@ -89,7 +95,7 @@ if (isset($_POST['submit'])){
 
         <div class="formulaire">
             
-        <form action="" method="post">
+        <form action="index.php" method="post">
         <fieldset>
             <label for="prenom">Entrez votre Prenom :</label>
             <input type="text" id="prenom" name="prenom">
@@ -104,7 +110,7 @@ if (isset($_POST['submit'])){
             
 
         </fieldset>
-        <input type="submit" value="envoyer">
+        <input type="submit" value="envoyer" name="envoyer">
 
         </form>
     </div>
