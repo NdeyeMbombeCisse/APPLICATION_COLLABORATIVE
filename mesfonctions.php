@@ -55,7 +55,7 @@
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td><a href="" class="link-dark"></a><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></td>
+      <td><a href="" class="link-dark"><img src="modify.png" alt="" width="25"></a></td>
     </tr>
     
   </tbody>
